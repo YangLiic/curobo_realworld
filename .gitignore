@@ -5,7 +5,7 @@ curobo/
 __pycache__/
 *.py[cod]
 *$py.class
-src/single_plan.egg-info
+src/single_plan.egg-info/
 
 # Virtual Environment
 .venv/
