@@ -40,6 +40,9 @@ uv pip install -e . --no-build-isolation
 
 # 安装测试工具 (可选)
 uv pip install pytest
+
+#测试所有模块
+python3 -m pytest .
 ```
 
 ### 4. 验证安装
@@ -60,7 +63,6 @@ python src/Single_plan.py
 
 > **配置文件路径修改**
 > 使用前请务必打开 `piper_camera/piper.yml`，将以下字段的路径修改为您本机的**绝对路径**：
-> - `isaac_usd_path`
 > - `urdf_path`
 > - `asset_root_path`
 > - `collision_spheres`

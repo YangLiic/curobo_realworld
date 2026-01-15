@@ -5,11 +5,6 @@
 robot_cfg:
   kinematics:
     use_usd_kinematics: False
-    isaac_usd_path: "/home/di-gua/licheng/manipulation/curobo_realworld/piper_camera/piper_description_v100_realsense_camera_v2/piper.usd"
-    usd_path: "piper_description_v100_realsense_camera_v2/piper.usd"
-    usd_robot_root: "/piper_camera"
-    usd_flip_joints: {}
-    usd_flip_joint_limits: []
     urdf_path: "/home/di-gua/licheng/manipulation/curobo_realworld/piper_camera/piper_description_v100_realsense_camera_v2.urdf"
     asset_root_path: "/home/di-gua/licheng/manipulation/curobo_realworld/piper_camera/piper_description_v100_realsense_camera_v2"
     base_link: "arm_base"
