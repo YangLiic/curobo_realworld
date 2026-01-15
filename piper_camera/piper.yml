@@ -1,0 +1,111 @@
+##
+## CuRobo configuration for Piper robot
+##
+
+robot_cfg:
+  kinematics:
+    use_usd_kinematics: False
+    isaac_usd_path: "/home/di-gua/licheng/manipulation/curobo_realworld/piper_camera/piper_description_v100_realsense_camera_v2/piper.usd"
+    usd_path: "piper_description_v100_realsense_camera_v2/piper.usd"
+    usd_robot_root: "/piper_camera"
+    usd_flip_joints: {}
+    usd_flip_joint_limits: []
+    urdf_path: "/home/di-gua/licheng/manipulation/curobo_realworld/piper_camera/piper_description_v100_realsense_camera_v2.urdf"
+    asset_root_path: "/home/di-gua/licheng/manipulation/curobo_realworld/piper_camera/piper_description_v100_realsense_camera_v2"
+    base_link: "arm_base"
+    ee_link: "link6"
+    
+    # 碰撞链接（需要检测碰撞的所有链接）
+    collision_link_names:
+      [
+        "arm_base",
+        "link1",
+        "link2",
+        "link3",
+        "link4",
+        "link5",
+        "link6",
+        "link7",
+        "link8",
+        "camera_link",
+      ]
+    
+    # 碰撞球配置文件（从 Isaac Sim 配置中提取的精确数据）
+    collision_spheres: "/home/di-gua/licheng/manipulation/curobo_realworld/piper_camera/spheres/piper.yml"
+    collision_sphere_buffer: 0.005
+    
+    # 自碰撞忽略对（相邻或永远不会碰撞的链接对）
+    self_collision_ignore:
+      {
+        "arm_base": ["link1", "link2", "link3", "camera_link"],
+        "link1": ["link2", "link3", "link4", "camera_link"],
+        "link2": ["link3", "link4", "link5", "camera_link"],
+        "link3": ["link4", "link5", "link6", "camera_link"],
+        "link4": ["link5", "link6", "link7", "link8", "camera_link"],
+        "link5": ["link6", "link7", "link8", "camera_link"],
+        "link6": ["link7", "link8", "camera_link"],
+        "link7": ["link8", "camera_link"],
+        "link8": ["camera_link"],
+      }
+    
+    # 自碰撞缓冲距离（米）
+    self_collision_buffer:
+      {
+        "arm_base": 0.05,
+        "link1": 0.02,
+        "link2": 0.02,
+        "link3": 0.02,
+        "link4": 0.02,
+        "link5": 0.02,
+        "link6": 0.02,
+        "link7": 0.005,
+        "link8": 0.005,
+        "camera_link": 0.01,
+      }
+    
+    # 用于碰撞检测的网格链接
+    mesh_link_names:
+      [
+        "arm_base",
+        "link1",
+        "link2",
+        "link3",
+        "link4",
+        "link5",
+        "link6",
+        "link7",
+        "link8",
+      ]
+    
+    use_global_cumul: True
+    
+    # 锁定夹爪关节（不参与规划，保持固定值）
+    lock_joints: {"joint7": 0.02, "joint8": -0.02}
+    
+    # C空间配置
+    cspace:
+      # 关节名称（包括所有关节，包括夹爪）
+      joint_names:
+        [
+          "joint1",
+          "joint2",
+          "joint3",
+          "joint4",
+          "joint5",
+          "joint6",
+          "joint7",
+          "joint8",
+        ]
+      
+      # 回退配置（安全姿态，包括夹爪位置）
+      retract_config: [0.0, 1.57, -1.5, 0.0, 0.0, 0.0, 0.02, -0.02]
+      
+      # 零位配置权重
+      null_space_weight: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+      
+      # C空间距离权重
+      cspace_distance_weight: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+      
+      # 位置限位容差（使用 Isaac Sim 配置中的值）
+      max_jerk: 10000.0
+      max_acceleration: 10.0
