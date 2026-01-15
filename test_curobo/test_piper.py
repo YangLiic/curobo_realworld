@@ -7,7 +7,7 @@ PROJECT_ROOT = os.path.join(os.path.dirname(__file__), "..")
 if PROJECT_ROOT not in sys.path:
     sys.path.append(PROJECT_ROOT)
 
-from src.Single_plan import CuroboPlanner
+from single_plan import CuroboPlanner
 
 # Piper 初始姿态（6个关节）- 使用 retract_config 作为安全起始点
 init_q = np.array([0.0, 1.57, -1.5, 0.0, 0.0, 0.0])

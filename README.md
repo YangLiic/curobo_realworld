@@ -10,6 +10,8 @@ pip install uv
 
 uv venv --python 3.10 .venv
 source .venv/bin/activate
+
+uv pip install -e . -v
 ```
 
 ### 2. 安装系统依赖
